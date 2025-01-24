@@ -35,7 +35,7 @@ fun ChatNavHost() {
             SplashRoute(
                 onNavigateToSignIn = {
                     navController.navigate(
-                        route = SignUpRoute,
+                        route = SignInRoute,
                         navOptions = navOptions {
                             popUpTo(SplashRoute) {
                                 inclusive = true
@@ -46,9 +46,11 @@ fun ChatNavHost() {
             )
 
         }
+
         composable<SignInRoute> {
             SignInRoute()
         }
+
         composable<SignUpRoute> {}
     }
 }
