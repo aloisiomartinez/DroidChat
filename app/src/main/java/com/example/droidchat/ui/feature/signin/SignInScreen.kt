@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -35,6 +36,9 @@ fun SignInRoute() {
 
 @Composable
 fun SignInScreen() {
+
+
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -65,7 +69,6 @@ fun SignInScreen() {
             placeholder = stringResource(id = R.string.feature_login_email),
             leadingIcon = R.drawable.ic_envelope,
             keyboardType = KeyboardType.Email
-
         )
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -84,9 +87,9 @@ fun SignInScreen() {
                 .padding(horizontal = 16.dp),
             placeholder = stringResource(id = R.string.feature_login_password),
             leadingIcon = R.drawable.ic_lock,
-            keyboardType = KeyboardType.Password
+            keyboardType = KeyboardType.Password,
+            imeAction = ImeAction.Done
         )
-
     }
 }
 
