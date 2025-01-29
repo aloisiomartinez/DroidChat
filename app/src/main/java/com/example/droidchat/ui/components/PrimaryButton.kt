@@ -36,7 +36,7 @@ fun PrimaryButton(
         colors = ButtonDefaults.buttonColors(
             containerColor = MaterialTheme.colorScheme.primary,
             contentColor = MaterialTheme.colorScheme.onPrimary,
-            disabledContentColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.8f)
+            disabledContentColor = MaterialTheme.colorScheme.primary
         )
     ) {
         Box(
@@ -51,6 +51,7 @@ fun PrimaryButton(
                     strokeCap = StrokeCap.Round,
                     color = MaterialTheme.colorScheme.onPrimary
                 )
+
             } else {
                 Text(
                     text = text,

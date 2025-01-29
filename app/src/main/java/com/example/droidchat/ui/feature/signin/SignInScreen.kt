@@ -77,11 +77,13 @@ fun SignInScreen(
                 .padding(horizontal = dimensionResource(id = R.dimen.spacing_medium)),
             placeholder = stringResource(id = R.string.feature_login_email),
             leadingIcon = R.drawable.ic_envelope,
-            keyboardType = KeyboardType.Email
+            keyboardType = KeyboardType.Email,
+            errorMessage = formState.emailError?.let {
+                stringResource(id = it)
+            }
         )
 
         Spacer(modifier = Modifier.height(14.dp))
-
 
         PrimaryTextField(
             value = formState.password,
@@ -93,7 +95,10 @@ fun SignInScreen(
             placeholder = stringResource(id = R.string.feature_login_password),
             leadingIcon = R.drawable.ic_lock,
             keyboardType = KeyboardType.Password,
-            imeAction = ImeAction.Done
+            imeAction = ImeAction.Done,
+            errorMessage = formState.passwordError?.let {
+                stringResource(id = it)
+            }
         )
 
         Spacer(modifier = Modifier.height(98.dp))
