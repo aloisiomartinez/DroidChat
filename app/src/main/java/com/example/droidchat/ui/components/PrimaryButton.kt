@@ -36,7 +36,8 @@ fun PrimaryButton(
         colors = ButtonDefaults.buttonColors(
             containerColor = MaterialTheme.colorScheme.primary,
             contentColor = MaterialTheme.colorScheme.onPrimary,
-            disabledContentColor = MaterialTheme.colorScheme.primary
+            disabledContentColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.8f),
+
         )
     ) {
         Box(
