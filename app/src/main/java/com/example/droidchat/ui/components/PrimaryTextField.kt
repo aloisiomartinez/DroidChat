@@ -36,6 +36,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import com.example.droidchat.R
+import com.example.droidchat.ui.extension.getVisualTransformationForPassword
 import com.example.droidchat.ui.theme.ColorError
 import kotlin.math.sin
 
@@ -91,16 +92,7 @@ fun PrimaryTextField(
                     )
                 }
             },
-            visualTransformation = if (keyboardType == KeyboardType.Password) {
-                if (passwordVisible) {
-                    VisualTransformation.None
-                } else {
-                    PasswordVisualTransformation()
-                }
-
-            } else {
-                VisualTransformation.None
-            },
+            visualTransformation = keyboardType.getVisualTransformationForPassword(passwordVisible),
             keyboardOptions = KeyboardOptions(
                 keyboardType = keyboardType,
                 imeAction = imeAction
