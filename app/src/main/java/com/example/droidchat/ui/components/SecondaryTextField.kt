@@ -82,7 +82,7 @@ fun SecondaryTextField(
         ) {
             Row(
                 modifier = Modifier
-                    .bottomBorder2(Color.Black, 2.dp),
+                    .bottomBorder(Color.Black, 2.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Column(
