@@ -31,7 +31,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.droidchat.R
 import com.example.droidchat.ui.extension.bottomBorder
-import com.example.droidchat.ui.extension.bottomBorder2
 import com.example.droidchat.ui.extension.getVisualTransformationForPassword
 import com.example.droidchat.ui.theme.ColorSuccess
 import com.example.droidchat.ui.theme.DroidChatTheme
@@ -82,7 +81,10 @@ fun SecondaryTextField(
         ) {
             Row(
                 modifier = Modifier
-                    .bottomBorder(Color.Black, 2.dp),
+                    .bottomBorder(
+                        MaterialTheme.colorScheme.onSurfaceVariant,
+                        1.dp
+                    ),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Column(
