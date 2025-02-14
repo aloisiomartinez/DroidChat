@@ -37,7 +37,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.droidchat.R
-import com.example.droidchat.navigation.SignInRoute
 import com.example.droidchat.ui.components.PrimaryButton
 import com.example.droidchat.ui.components.PrimaryTextField
 import com.example.droidchat.ui.theme.BackgroundGradient
