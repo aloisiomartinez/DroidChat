@@ -48,8 +48,6 @@ fun ProfilePictureSelector(
             text = stringResource(id = R.string.common_add_profile_photo),
             style = MaterialTheme.typography.bodyMedium
         )
-
-
     }
 }
 
