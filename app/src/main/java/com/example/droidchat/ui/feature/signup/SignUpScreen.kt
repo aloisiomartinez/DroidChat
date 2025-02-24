@@ -127,9 +127,12 @@ fun SignUpScreen(
 
                     Spacer(modifier = Modifier.height(22.dp))
 
-                    val extraTextStringResId = if(formState.password.isNotEmpty() && formState.password == formState.passwordConfirmation) {
-                        R.string.feature_sign_up_passwords_match
-                    } else null
+                    val extraTextStringResId =
+                        remember(formState.password, formState.passwordConfirmation) {
+                            if (formState.password.isNotEmpty() && formState.password == formState.passwordConfirmation) {
+                                R.string.feature_sign_up_passwords_match
+                            } else null
+                        }
 
                     SecondaryTextField(
                         label = stringResource(id = R.string.feature_sign_up_password),
