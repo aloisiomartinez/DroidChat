@@ -39,14 +39,17 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.droidchat.R
 import com.example.droidchat.ui.components.PrimaryButton
 import com.example.droidchat.ui.components.PrimaryTextField
+import com.example.droidchat.ui.feature.signup.SignUpFormValidator
+import com.example.droidchat.ui.feature.signup.SignUpViewModel
 import com.example.droidchat.ui.theme.BackgroundGradient
 import com.example.droidchat.ui.theme.DroidChatTheme
 
 @Composable
 fun SignInRoute(
-    viewModel: SignInViewModel = viewModel(),
+    viewModel: SignInViewModel = viewModel {
+        SignInViewModel(SignInFormValidator())
+    },
     navigateToSignUp: () -> Unit
-
 ) {
     val formState = viewModel.formState
     SignInScreen(
@@ -89,9 +92,7 @@ fun SignInScreen(
             placeholder = stringResource(id = R.string.feature_login_email),
             leadingIcon = R.drawable.ic_envelope,
             keyboardType = KeyboardType.Email,
-            errorMessage = formState.emailError?.let {
-                stringResource(id = it)
-            }
+            errorMessage = formState.emailError?.let { stringResource(id = it) }
         )
 
         Spacer(modifier = Modifier.height(14.dp))
