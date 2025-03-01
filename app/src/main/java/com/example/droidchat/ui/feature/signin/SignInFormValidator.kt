@@ -12,6 +12,7 @@ class SignInFormValidator : FormValidator<SignInFormState> {
         val isEmailValid = EmailValidator.isValid(formState.email)
         val isPasswordValid = PasswordValidator.isValid(formState.password)
 
+        // Existe algum item na lista que é false? Se sim , hasError é true
         val hasError = listOf(
             isEmailValid,
             isPasswordValid
