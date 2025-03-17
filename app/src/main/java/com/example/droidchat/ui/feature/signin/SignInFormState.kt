@@ -2,6 +2,7 @@ package com.example.droidchat.ui.feature.signin
 
 import androidx.annotation.StringRes
 
+
 data class SignInFormState(
     val email: String = "",
     @StringRes

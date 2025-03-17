@@ -2,6 +2,7 @@ package com.example.droidchat.ui.feature.signup
 
 import android.net.Uri
 import androidx.annotation.StringRes
+import dagger.Provides
 
 data class SignUpFormState (
     val profilePictureUri: Uri? = null,

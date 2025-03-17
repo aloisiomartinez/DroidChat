@@ -4,19 +4,25 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.droidchat.R
+import com.example.droidchat.data.network.NetworkDataSource
+import com.example.droidchat.data.network.model.AuthRequest
 import com.example.droidchat.ui.feature.signup.SignUpFormState
 import com.example.droidchat.ui.validator.FormValidator
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class SignInViewModel @Inject constructor(
-    private val formValidator: FormValidator<SignInFormState>
+    private val networkDataSource: NetworkDataSource
 ) : ViewModel() {
 
     var formState by mutableStateOf(SignInFormState())
         private set
+
+
 
     fun onFormEvent(event: SignInFormEvent) {
         when (event) {
@@ -37,10 +43,10 @@ class SignInViewModel @Inject constructor(
     private fun doSignIn() {
         //var isFormValid = true
 
-        if (isValidForm()) {
-            formState = formState.copy(isLoading = true)
-            //Request API
-        }
+//        if (isValidForm()) {
+//            formState = formState.copy(isLoading = true)
+//            //Request API
+//        }
 
 //        //resetFormErrorState()
 //        if (formState.email.isBlank()) {
@@ -58,11 +64,11 @@ class SignInViewModel @Inject constructor(
 //        }
     }
 
-    private fun isValidForm(): Boolean {
-        return !formValidator.validate(formState).also {
-            formState = it
-        }.hasError
-    }
+//    private fun isValidForm(): Boolean {
+//        return !formValidator.validate(formState).also {
+//            formState = it
+//        }.hasError
+//    }
 
     private fun resetFormErrorState() {
         formState = formState.copy(
