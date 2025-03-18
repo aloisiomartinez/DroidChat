@@ -5,13 +5,21 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.droidchat.R
+import com.example.droidchat.data.model.CreateAccount
+import com.example.droidchat.data.repository.AuthRepository
 import com.example.droidchat.ui.feature.signin.SignInFormEvent
 import com.example.droidchat.ui.feature.signin.SignInFormState
 import com.example.droidchat.ui.validator.FormValidator
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class SignUpViewModel(
-    private val formValidator: FormValidator<SignUpFormState>
+@HiltViewModel
+class SignUpViewModel @Inject constructor(
+    private val formValidator: FormValidator<SignUpFormState>,
+    private val authRepository: AuthRepository
 ) : ViewModel() {
 
     var formState by mutableStateOf(SignUpFormState())
@@ -72,7 +80,21 @@ class SignUpViewModel(
     private fun doSignUp() {
         if (isValidForm()) {
             formState = formState.copy(isLoading = true)
-            //Request API
+            viewModelScope.launch {
+                try {
+                    authRepository.signUp(
+                        createAccount = CreateAccount(
+                            username = "",
+                            password = "",
+                            firstName = formState.firstName,
+                            lastName = formState.lastName,
+                            profilePictureId = null
+                        )
+                    )
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
         }
     }
 
